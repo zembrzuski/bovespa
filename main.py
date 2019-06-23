@@ -3,6 +3,7 @@ import zipfile
 import io as io
 import register_form_extractor
 
+
 def bytes_to_zipfile(the_bytes):
     zip_data = io.BytesIO()
     zip_data.write(the_bytes)
@@ -22,8 +23,13 @@ def download_zip_file_from_bovespa():
     register_form = list(filter(
         lambda file: 'FormularioCadastral.xml' == file.filename, retrieved_zip_file.filelist))[0]
 
+    document_type = 'DFP' \
+        if len(list(filter(lambda file: 'DFP' in file.filename, retrieved_zip_file.filelist))) > 0 \
+        else 'ITR'
+
     all_files = {
         'original_zip_file': retrieved_zip_file,
+        'document_type': document_type,
         'register_form': register_form
     }
 
