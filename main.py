@@ -15,6 +15,9 @@ def main():
     formulario_cadastral_info = formulario_cadastral_extractor.extract_informmation(all_files['formulario_cadastral'])
     info_financeiras = info_financeiras_extractor.extract_information(all_files['informacoes_financeiras'])
 
+    list(filter(lambda x: 'Patrimônio Líquido' == x['descricao_conta'], info_financeiras))
+    info_financeiras
+
     print('ae')
 
 
