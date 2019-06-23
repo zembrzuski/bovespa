@@ -1,6 +1,7 @@
 from xml_extractors import formulario_cadastral_extractor
 import helpers.download_helper as downloader_helper
 import helpers.bovespa_unzipper as bovespa_unzipper
+import xml_extractors.info_financeiras_extractor as info_financeiras_extractor
 
 
 def main():
@@ -12,6 +13,7 @@ def main():
     all_files = bovespa_unzipper.unzip(downloaded_file)
 
     formulario_cadastral_info = formulario_cadastral_extractor.extract_informmation(all_files['formulario_cadastral'])
+    info_financeiras = info_financeiras_extractor.extract_information(all_files['informacoes_financeiras'])
 
     print('ae')
 
