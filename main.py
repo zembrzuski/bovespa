@@ -2,7 +2,7 @@ from xml_extractors import formulario_cadastral_extractor
 import helpers.download_helper as downloader_helper
 import helpers.bovespa_unzipper as bovespa_unzipper
 import xml_extractors.info_financeiras_extractor as info_financeiras_extractor
-
+from xml_extractors import composicao_capital_social_extractor
 
 def main():
     url_to_download = \
@@ -14,9 +14,7 @@ def main():
 
     formulario_cadastral_info = formulario_cadastral_extractor.extract_informmation(all_files['formulario_cadastral'])
     info_financeiras = info_financeiras_extractor.extract_information(all_files['informacoes_financeiras'])
-
-    list(filter(lambda x: 'Patrimônio Líquido' == x['descricao_conta'], info_financeiras))
-    info_financeiras
+    composicao_capital = composicao_capital_social_extractor.extract_information(all_files['composicao_capital_social'])
 
     print('ae')
 
