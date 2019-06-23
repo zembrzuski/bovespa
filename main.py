@@ -4,6 +4,7 @@ import helpers.bovespa_unzipper as bovespa_unzipper
 import xml_extractors.info_financeiras_extractor as info_financeiras_extractor
 from xml_extractors import composicao_capital_social_extractor
 
+
 def main():
     url_to_download = \
         'https://www.rad.cvm.gov.br/enetconsulta/frmDownloadDocumento.aspx?' \
