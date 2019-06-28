@@ -10,7 +10,7 @@ def get_document_type(root_zip_file):
 
 
 def get_inner_zip_information(original_zip_file):
-    inner_zip_item = list(filter(lambda file: 'xml' not in file.filename, original_zip_file.filelist))[0]
+    inner_zip_item = list(filter(lambda file: 'itr' in file.filename or 'dfp' in file.filename, original_zip_file.filelist))[0]
     inner_zip_bytes = zip_helper.open_file_inside_zip_file(original_zip_file, inner_zip_item.filename)
     inner_zip_file = zip_helper.bytes_to_zipfile(inner_zip_bytes)
 

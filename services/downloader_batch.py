@@ -35,7 +35,7 @@ def process_file(index):
 
 
 def download():
-    index = 80810
+    index = 9675
 
     while index > 0:
         print('trying {}'.format(index))
