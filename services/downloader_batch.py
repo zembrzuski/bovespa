@@ -23,7 +23,7 @@ def process_file(index):
         return
 
     all_files = bovespa_unzipper.unzip(downloaded_file)
-    formulario_cadastral_info = formulario_cadastral_extractor.extract_information(all_files['formulario_cadastral'])
+    formulario_cadastral_info = formulario_cadastral_extractor.extract(all_files['formulario_cadastral'])
 
     filesystem_helper.persist_file(
         codigo_cvm=formulario_cadastral_info['codigo_cvm'],

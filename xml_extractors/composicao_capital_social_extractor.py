@@ -26,7 +26,7 @@ def __capital_social_list_filter(composicao_capital_social_list):
     return __capital_social_converter(filtered[0])
 
 
-def extract_information(xml):
+def extract(xml):
     the_dict = xmltodict.parse(xml.decode('utf-8'))
 
     array = the_dict['ArrayOfComposicaoCapitalSocialDemonstracaoFinanceira']

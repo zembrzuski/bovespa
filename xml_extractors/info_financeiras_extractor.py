@@ -15,7 +15,7 @@ def extract_conta(an_account):
     }
 
 
-def extract_information(info_financeiras):
+def extract(info_financeiras):
     the_dict = xmltodict.parse(info_financeiras.decode('utf-8'))
     info_finas_array = the_dict['ArrayOfInfoFinaDFin']['InfoFinaDFin']
 
