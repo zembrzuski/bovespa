@@ -1,9 +1,8 @@
 import requests
-import helpers.bovespa_unzipper as bovespa_unzipper
 from xml_extractors import formulario_cadastral_extractor
 import helpers.zip_helper as zip_helper
-import os
 from helpers import bovespa_unzipper
+from helpers import filesystem_helper
 
 bovespa_url_base = \
     'https://www.rad.cvm.gov.br/enetconsulta/frmDownloadDocumento.aspx?' \
@@ -26,12 +25,10 @@ def process_file(index):
     all_files = bovespa_unzipper.unzip(downloaded_file)
     formulario_cadastral_info = formulario_cadastral_extractor.extract_information(all_files['formulario_cadastral'])
 
-    directory = '{}/{}'.format('/home/zembrzuski/labs/rolling-snow-zips', formulario_cadastral_info['codigo_cvm'])
-
-    os.makedirs(directory, exist_ok=True)
-
-    with open('{}/{}.zip'.format(directory, index), 'wb') as f:
-        f.write(downloaded_file)
+    filesystem_helper.persist_file(
+        codigo_cvm=formulario_cadastral_info['codigo_cvm'],
+        file_index=index,
+        file_to_persist=downloaded_file)
 
 
 def download():
