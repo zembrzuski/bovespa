@@ -3,7 +3,7 @@ from services import downloader_batch
 
 def main():
     downloader_batch.download()
-    print('finishe')
+    print('finished')
 
 
 if __name__ == '__main__':

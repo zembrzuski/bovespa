@@ -4,7 +4,7 @@ from pathlib import Path
 base_filesystem_path = '/home/zembrzuski/labs/rolling-snow-zips'
 
 
-def find_filepath_by_id_documento(id_documento):
+def __find_filepath_by_id_documento(id_documento):
     zip_file_name = '{}.zip'.format(id_documento)
 
     for filename in Path(base_filesystem_path).glob('**/{}'.format(zip_file_name)):
@@ -14,7 +14,7 @@ def find_filepath_by_id_documento(id_documento):
 
 
 def load_file(id_documento):
-    file_path = find_filepath_by_id_documento(id_documento)
+    file_path = __find_filepath_by_id_documento(id_documento)
 
     with open(str(file_path), 'rb') as f:
         return f.read()
