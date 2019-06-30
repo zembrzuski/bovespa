@@ -24,6 +24,7 @@ def convert(raw, id_documento):
         'numero_documento_original': id_documento,
         'data_entrega_documento': raw['formulario_cadastral']['data_entrega'],
         'plano_contas': {
-            'patrimonio_liquido': get_conta('patrimonio_liquido')
+            'patrimonio_liquido': get_conta('patrimonio_liquido'),
+            'ativo_total': get_conta('ativo_total')
         }
     }
