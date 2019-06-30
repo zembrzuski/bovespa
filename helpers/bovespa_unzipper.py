@@ -29,7 +29,6 @@ def unzip(downloaded_file):
     formulario_demonstracao_financeira = zip_helper.open_file_inside_zip_file(
         root_zip_file, 'FormularioDemonstracaoFinanceira{}.xml'.format(document_type))
 
-
     return {
         'document_type': document_type,
         'formulario_cadastral': formulario_cadastral,

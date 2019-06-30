@@ -6,12 +6,7 @@ def extract(formulario_cadastral, formuladrio_demonstracao_financeira):
     cadastral_dict = xmltodict.parse(formulario_cadastral.decode('utf-8'))
     demonstracao_financeira_dict = xmltodict.parse(formuladrio_demonstracao_financeira.decode('utf-8'))
 
-    if demonstracao_financeira_dict['Documento']['CodigoEscalaMoeda'] != '2':
-        raise Exception('se essa excecao for lancada, eu imagino que seja pelo fato de os '
-                        'valores das contas nao estao em \'mil\' reais. se isso acontecer, '
-                        'eu devo pegar o balanco da empresa e verificar no site da bovespa e,'
-                        'se essa minha hipotese for verdadeira, entao vou ter que fazer uma logica'
-                        'para deixar bem direitinho esses valores')
+    validation_for_possible_mistake(demonstracao_financeira_dict)
 
     referencia = date_helper.parse(demonstracao_financeira_dict['Documento']['DataReferenciaDocumento'].strip())
     entrega = date_helper.parse(cadastral_dict['Documento']['DataEntrega'].strip())
@@ -26,3 +21,16 @@ def extract(formulario_cadastral, formuladrio_demonstracao_financeira):
             'ano': referencia.year
         }
     }
+
+
+def validation_for_possible_mistake(demonstracao_financeira_dict):
+    """
+    Leia a excecao e entenderá a razao desse metodo estranho.
+    """
+
+    if demonstracao_financeira_dict['Documento']['CodigoEscalaMoeda'] != '2':
+        raise Exception('se essa excecao for lancada, eu imagino que seja pelo fato de os '
+                        'valores das contas nao estao em \'mil\' reais. se isso acontecer, '
+                        'eu devo pegar o balanco da empresa e verificar no site da bovespa e,'
+                        'se essa minha hipotese for verdadeira, entao vou ter que fazer uma logica'
+                        'para deixar bem direitinho esses valores')
