@@ -1,5 +1,5 @@
 import requests
-from xml_extractors import formulario_cadastral_extractor
+from services.xml_extractors import formulario_cadastral_extractor
 import helpers.zip_helper as zip_helper
 from helpers import bovespa_unzipper
 from helpers import filesystem_helper

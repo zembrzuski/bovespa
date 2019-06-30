@@ -1,6 +1,6 @@
-from xml_extractors import formulario_cadastral_extractor
-from xml_extractors import composicao_capital_social_extractor
-from xml_extractors import info_financeiras_extractor
+from services.xml_extractors import formulario_cadastral_extractor
+from services.xml_extractors import composicao_capital_social_extractor
+from services.xml_extractors import info_financeiras_extractor
 
 
 def extract_balanco(all_files):

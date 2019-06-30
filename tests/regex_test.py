@@ -35,6 +35,16 @@ class TestRegex(unittest.TestCase):
             resp1 = regex_helper.evaluate_indicador('patrimonio_liquido', p)
             self.assertIsNotNone(resp1, p)
 
+        negatives = [
+            'Mutações Internas do Patrimônio Líquido',
+            'Patrimônio Líquido Consolidado',
+            'patrimônio Liquido Consolidado',
+        ]
+
+        for n in negatives:
+            resp1 = regex_helper.evaluate_indicador('patrimonio_liquido', n)
+            self.assertIsNone(resp1, n)
+
 
 if __name__ == '__main__':
     unittest.main()

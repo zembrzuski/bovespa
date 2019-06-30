@@ -1,7 +1,7 @@
 import re
 
 regexes = {
-    'patrimonio_liquido': 'patr(\.)?(im[oô]nio)? l[ií]q(\.)?(uido)?'
+    'patrimonio_liquido': '^patr(\.)?(im[oô]nio)? l[ií]q(\.)?(uido)?$'
 }
 
 
