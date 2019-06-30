@@ -1,4 +1,4 @@
-from helpers import regex_helper
+from helpers import conta_extractor_helper
 import unittest
 
 
@@ -32,7 +32,7 @@ class TestRegex(unittest.TestCase):
         ]
 
         for p in positives:
-            resp1 = regex_helper.evaluate_indicador('patrimonio_liquido', p)
+            resp1 = conta_extractor_helper.evaluate_indicador('patrimonio_liquido', p)
             self.assertIsNotNone(resp1, p)
 
         negatives = [
@@ -42,7 +42,7 @@ class TestRegex(unittest.TestCase):
         ]
 
         for n in negatives:
-            resp1 = regex_helper.evaluate_indicador('patrimonio_liquido', n)
+            resp1 = conta_extractor_helper.evaluate_indicador('patrimonio_liquido', n)
             self.assertIsNone(resp1, n)
 
 

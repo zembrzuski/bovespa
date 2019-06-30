@@ -1,14 +1,14 @@
-from helpers import regex_helper
+from helpers import conta_extractor_helper
 
 
-def __to_map(valoes_conta):
+def __to_map(valores_conta):
     mapped = {
-        0: valoes_conta[0]
+        0: valores_conta[0]
     }
 
-    for i in range(1, len(valoes_conta)):
-        if valoes_conta[i] > 0:
-            mapped[i] = valoes_conta[i]
+    for i in range(1, len(valores_conta)):
+        if valores_conta[i] > 0:
+            mapped[i] = valores_conta[i]
 
     filtered = dict()
 
@@ -19,19 +19,8 @@ def __to_map(valoes_conta):
     return filtered
 
 
-def __retrieve_a_given_conta(indicador, raw):
-    filtered = list(filter(
-        lambda x: regex_helper.evaluate_indicador(indicador, x['descricao_conta']),
-        raw['informacoes_financeiras']))
-
-    if len(filtered) != 1:
-        raise Exception('errow. melhore tua regex!')
-
-    return filtered[0]
-
-
 def indices_to_date(raw):
-    patrimonio_liquido = __retrieve_a_given_conta('patrimonio_liquido', raw)
+    patrimonio_liquido =conta_extractor_helper.retrieve_a_given_conta('patrimonio_liquido', raw)
     valores_conta_mapped = __to_map(patrimonio_liquido['valores_conta'])
 
     data_documento = raw['formulario_cadastral']['data_documento']['data_referencia_documento']
