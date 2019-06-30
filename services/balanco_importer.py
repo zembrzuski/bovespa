@@ -11,4 +11,4 @@ def import_balanco(id_documento):
     balanco_raw = balanco_xml_extractor.extract_balanco(all_files)
     balanco_bonito = raw_to_bonito_converter.convert(balanco_raw, id_documento)
 
-    return True
+    return balanco_bonito

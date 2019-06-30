@@ -20,7 +20,9 @@ def __to_map(valores_conta):
 
 
 def indices_to_date(raw):
-    patrimonio_liquido =conta_extractor_helper.retrieve_a_given_conta('patrimonio_liquido', raw)
+    patrimonio_liquido = conta_extractor_helper.retrieve_a_given_conta(
+        'patrimonio_liquido', raw['informacoes_financeiras'])
+
     valores_conta_mapped = __to_map(patrimonio_liquido['valores_conta'])
 
     data_documento = raw['formulario_cadastral']['data_documento']['data_referencia_documento']
