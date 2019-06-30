@@ -44,17 +44,22 @@ def __do_dfp_stupid_validation(patrimonio_liquido):
     if valores_conta[0] == 0 or valores_conta[1] == 0:
         raise Exception('Só previ caso em que patrimonios liquidos de dfp sao preenchidos nas posicoes 1 e 2')
 
-    if valores_conta[2] != 0 or valores_conta[3] != 0 or valores_conta[4] != 0:
+    if valores_conta[3] != 0 or valores_conta[4] != 0:
         raise Exception('Só previ caso em que patrimonios liquidos de dfp sao até as posicoes 1 e 2')
 
 
 def __indices_to_date_dfp(patrimonio_liquido, data_documento):
     __do_dfp_stupid_validation(patrimonio_liquido)
 
-    return {
+    mapper = {
         0: data_documento,
-        1: date_helper.parse('{}-12-31T00:00:00'.format(data_documento.year-1))
+        1: date_helper.parse('{}-12-31T00:00:00'.format(data_documento.year - 1))
     }
+
+    if patrimonio_liquido['valores_conta'][2] != 0:
+        mapper[2] = date_helper.parse('{}-12-31T00:00:00'.format(data_documento.year - 2))
+
+    return mapper
 
 
 def indices_to_date(raw):
