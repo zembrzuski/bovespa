@@ -21,15 +21,19 @@ def unzip(downloaded_file):
     root_zip_file = zip_helper.bytes_to_zipfile(downloaded_file)
     inner_zip_files = get_inner_zip_information(root_zip_file)
 
+    document_type = get_document_type(root_zip_file)
+
     formulario_cadastral = zip_helper.open_file_inside_zip_file(root_zip_file, 'FormularioCadastral.xml')
     informacoes_financeiras = zip_helper.open_file_inside_zip_file(inner_zip_files, 'InfoFinaDFin.xml')
     composicao_capital_social = zip_helper.open_file_inside_zip_file(inner_zip_files, 'ComposicaoCapitalSocialDemonstracaoFinanceiraNegocios.xml')
+    formulario_demonstracao_financeira = zip_helper.open_file_inside_zip_file(
+        root_zip_file, 'FormularioDemonstracaoFinanceira{}.xml'.format(document_type))
 
-    document_type = get_document_type(root_zip_file)
 
     return {
         'document_type': document_type,
         'formulario_cadastral': formulario_cadastral,
+        'formulario_demonstracao_financeira': formulario_demonstracao_financeira,
         'informacoes_financeiras': informacoes_financeiras,
         'composicao_capital_social': composicao_capital_social
     }

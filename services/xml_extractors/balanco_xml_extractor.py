@@ -4,9 +4,14 @@ from services.xml_extractors import info_financeiras_extractor
 
 
 def extract_balanco(all_files):
+    formulario_cadastral = formulario_cadastral_extractor.extract(
+        all_files['formulario_cadastral'], all_files['formulario_demonstracao_financeira'])
+
+    composicao_capital_social = composicao_capital_social_extractor.extract(all_files['composicao_capital_social'])
+
     return {
         'document_type': all_files['document_type'],
-        'formulario_cadastral': formulario_cadastral_extractor.extract(all_files['formulario_cadastral']),
+        'formulario_cadastral': formulario_cadastral,
         'informacoes_financeiras': info_financeiras_extractor.extract(all_files['informacoes_financeiras']),
-        'composicao_capital_social': composicao_capital_social_extractor.extract(all_files['composicao_capital_social'])
+        'composicao_capital_social': composicao_capital_social
     }
