@@ -8,6 +8,10 @@ conta_filter = {
     'ativo_total': {
         'regex': '^ativo total$',
         'codigo_tipo_informacao_financeira': 2
+    },
+    'receita_liquida': {
+        'regex': '^receita.*venda.*bens.*servi.o.*$',
+        'codigo_tipo_informacao_financeira': 2
     }
 }
 
