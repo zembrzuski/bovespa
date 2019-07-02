@@ -21,7 +21,6 @@ def serialize_valores(values):
             'value': value
         })
 
-    print('values')
     return serialized_values
 
 
@@ -31,23 +30,20 @@ def serialize_plano_contas(plano_contas):
     for key, values in plano_contas.items():
         serialized_plano_contas[key] = serialize_valores(values)
 
-    print('oi')
-    pass
+    return serialized_plano_contas
 
 
 def serialize_balanco(balanco):
     balanco_to_serialize = copy.deepcopy(balanco)
 
     balanco_to_serialize['data_entrega_documento'] = serialize_date(balanco_to_serialize['data_entrega_documento'])
-    balanco_to_serialize.pop('plano_contas', None)
-    serialized_plano_contas = serialize_plano_contas(balanco['plano_contas'])
+    balanco_to_serialize['plano_contas'] = serialize_plano_contas(balanco['plano_contas'])
 
-    print('ae')
-    pass
+    return balanco_to_serialize
 
 
 def index_balanco(balanco):
     url_to_post = '{}/teste/teste/{}'.format(config['elasticsearch'], balanco['numero_documento_original'])
     serialized = serialize_balanco(balanco)
 
-    return requests.post(url_to_post, serialized).status_code
+    return requests.post(url_to_post, json=serialized).status_code
