@@ -2,6 +2,7 @@ import helpers.bovespa_unzipper as bovespa_unzipper
 from helpers import filesystem_helper
 from services.xml_extractors import balanco_xml_extractor
 from services.domain_converter import raw_to_bonito_converter
+from repository import elasticsearch_repository
 
 
 def import_balanco(id_documento):
@@ -11,4 +12,4 @@ def import_balanco(id_documento):
     balanco_raw = balanco_xml_extractor.extract_balanco(all_files)
     balanco_bonito = raw_to_bonito_converter.convert(balanco_raw, id_documento)
 
-    return balanco_bonito
+    return elasticsearch_repository.index_balanco(balanco_bonito)

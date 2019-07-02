@@ -23,9 +23,9 @@ def convert(raw, id_documento):
         'codigo_cvm': raw['formulario_cadastral']['codigo_cvm'],
         'numero_documento_original': id_documento,
         'data_entrega_documento': raw['formulario_cadastral']['data_entrega'],
+        'id_documento': id_documento,
+        'tipo_documento': raw['document_type'],
         'plano_contas': {
             'patrimonio_liquido': get_conta('patrimonio_liquido'),
-            'ativo_total': get_conta('ativo_total'),
-            'receita_liquida': get_conta('receita_liquida')
         }
     }
