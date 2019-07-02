@@ -1,13 +1,12 @@
 import os
 from pathlib import Path
-
-base_filesystem_path = '/home/zembrzuski/labs/rolling-snow-zips'
+from config.local import config
 
 
 def __find_filepath_by_id_documento(id_documento):
     zip_file_name = '{}.zip'.format(id_documento)
 
-    for filename in Path(base_filesystem_path).glob('**/{}'.format(zip_file_name)):
+    for filename in Path(config['base_filesystem_path']).glob('**/{}'.format(zip_file_name)):
         return filename
 
     raise Exception("File not found {}".format(id_documento))
@@ -21,7 +20,7 @@ def load_file(id_documento):
 
 
 def persist_file(codigo_cvm, file_index, file_to_persist):
-    directory = '{}/{}'.format(base_filesystem_path, codigo_cvm)
+    directory = '{}/{}'.format(config['base_filesystem_path'], codigo_cvm)
 
     os.makedirs(directory, exist_ok=True)
 
