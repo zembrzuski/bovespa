@@ -13,8 +13,7 @@ def extract_conta(an_account):
             float(an_account['ValorConta2']),
             float(an_account['ValorConta3']),
             float(an_account['ValorConta4']),
-            float(an_account['ValorConta5']),
-            float(an_account['ValorConta6'])
+            float(an_account['ValorConta5'])
         ]
     }
 

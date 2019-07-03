@@ -27,6 +27,5 @@ def convert(raw, id_documento):
         'tipo_documento': raw['document_type'],
         'plano_contas': {
             'patrimonio_liquido': get_conta('patrimonio_liquido'),
-            'lucro_liquido': get_conta('lucro_liquido')
         }
     }

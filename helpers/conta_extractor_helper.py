@@ -3,14 +3,15 @@ import re
 conta_filter = {
     'patrimonio_liquido': {
         'regex': '^patr(\.)?(im[oô]nio)? l[ií]q(\.)?(uido)?$',
-        'codigo_tipo_informacao_financeira': 1,
-        'tipo_informacao': 'balanco_patrimonial'
-
+        'codigo_tipo_informacao_financeira': 1
     },
-    'lucro_liquido': {
-        'regex': '^lucro l.quido consolidado',
-        'codigo_tipo_informacao_financeira': 2,
-        'tipo_informacao': 'demonstracao_resultado'
+    'ativo_total': {
+        'regex': '^ativo total$',
+        'codigo_tipo_informacao_financeira': 2
+    },
+    'receita_liquida': {
+        'regex': '^receita.*venda.*bens.*servi.o.*$',
+        'codigo_tipo_informacao_financeira': 2
     }
 }
 
@@ -34,29 +35,12 @@ def retrieve_a_given_conta(conta, informacoes_financeiras):
     return filtered_info_financeira[0]
 
 
-def convert_date_for_balanco_patrimonial(valores_conta, index_to_date_mapper):
+def retrieve_conta_with_date(conta, informacoes_financeiras, index_to_date_mapper):
+    valores_conta = retrieve_a_given_conta(conta, informacoes_financeiras)['valores_conta']
+
     conta_with_date = dict()
 
     for key, value in index_to_date_mapper.items():
         conta_with_date[value] = valores_conta[key]
 
     return conta_with_date
-
-
-def convert_date_for_demonstracao_resultado(valores_conta, index_to_date_mapper):
-    print('oi')
-    pass
-
-
-def retrieve_conta_with_date(conta, informacoes_financeiras, index_to_date_mapper):
-    valores_conta = retrieve_a_given_conta(conta, informacoes_financeiras)['valores_conta']
-
-    if conta_filter[conta]['tipo_informacao'] == 'balanco_patrimonial':
-        return convert_date_for_balanco_patrimonial(valores_conta, index_to_date_mapper)
-
-    if conta_filter[conta]['tipo_informacao'] == 'demonstracao_resultado':
-        return convert_date_for_demonstracao_resultado(valores_conta, index_to_date_mapper)
-
-
-    print('AE')
-
