@@ -1,4 +1,4 @@
-from helpers import balanco_date_index_mapper
+from helpers.balanco_date_mapper import date_resolver
 from helpers import date_helper
 import unittest
 
@@ -24,7 +24,7 @@ class BalancoDateIndexTest(unittest.TestCase):
             ],
 
         }
-        resp = balanco_date_index_mapper.indices_to_date(dfp)
+        resp = date_resolver.indices_to_date(dfp)
 
         expected = {
             0: date_helper.parse('2019-12-31T00:00:00'),
@@ -52,7 +52,7 @@ class BalancoDateIndexTest(unittest.TestCase):
             ],
 
         }
-        resp = balanco_date_index_mapper.indices_to_date(dfp)
+        resp = date_resolver.indices_to_date(dfp)
 
         expected = {
             0: date_helper.parse('2019-12-31T00:00:00'),
@@ -82,7 +82,7 @@ class BalancoDateIndexTest(unittest.TestCase):
             ],
 
         }
-        resp = balanco_date_index_mapper.indices_to_date(itr)
+        resp = date_resolver.indices_to_date(itr)
 
         expected = {
             1: date_helper.parse('2019-03-31T00:00:00'),
@@ -111,7 +111,7 @@ class BalancoDateIndexTest(unittest.TestCase):
             ],
 
         }
-        resp = balanco_date_index_mapper.indices_to_date(itr)
+        resp = date_resolver.indices_to_date(itr)
 
         expected = {
             1: date_helper.parse('2019-03-31T00:00:00'),
