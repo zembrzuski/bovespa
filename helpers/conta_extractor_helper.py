@@ -23,7 +23,6 @@ def retrieve_a_given_conta(conta, informacoes_financeiras):
 
 def retrieve_conta_with_date(conta, informacoes_financeiras, index_to_date_mapper, trimestre):
     valores_conta = retrieve_a_given_conta(conta, informacoes_financeiras)['valores_conta']
-
     tipo_conta = conta_definition[conta]['tipo_conta']
 
     conta_with_date = dict()
