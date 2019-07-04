@@ -21,14 +21,14 @@ def retrieve_a_given_conta(conta, informacoes_financeiras):
     return filtered_info_financeira[0]
 
 
-def retrieve_conta_with_date(conta, informacoes_financeiras, index_to_date_mapper):
+def retrieve_conta_with_date(conta, informacoes_financeiras, index_to_date_mapper, trimestre):
     valores_conta = retrieve_a_given_conta(conta, informacoes_financeiras)['valores_conta']
 
     tipo_conta = conta_definition[conta]['tipo_conta']
 
     conta_with_date = dict()
 
-    for key, value in index_to_date_mapper[tipo_conta].items():
+    for key, value in index_to_date_mapper[tipo_conta][trimestre-1].items():
         conta_with_date[value] = valores_conta[key]
 
     return conta_with_date
