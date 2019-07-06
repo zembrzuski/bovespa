@@ -3,9 +3,9 @@ from services.xml_extractors import composicao_capital_social_extractor
 from services.xml_extractors import info_financeiras_extractor
 
 
-def extract_balanco(all_files):
+def extract_balanco(all_files, id_documento):
     formulario_cadastral = formulario_cadastral_extractor.extract(
-        all_files['formulario_cadastral'], all_files['formulario_demonstracao_financeira'])
+        all_files['formulario_cadastral'], all_files['formulario_demonstracao_financeira'], id_documento)
 
     composicao_capital_social = composicao_capital_social_extractor.extract(all_files['composicao_capital_social'])
 

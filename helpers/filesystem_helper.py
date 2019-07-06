@@ -28,3 +28,12 @@ def persist_file(codigo_cvm, file_index, file_to_persist):
         f.write(file_to_persist)
 
     return True
+
+
+def find_all_balancos_from_company(cvm_code):
+    directory = '{}/{}'.format(config['base_filesystem_path'], cvm_code)
+
+    filtered = list(filter(lambda x: 'zip' in x, os.listdir(directory)))
+    ids_demonstrativos = list(map(lambda x: int(x.replace('.zip', '')), filtered))
+
+    return sorted(ids_demonstrativos)

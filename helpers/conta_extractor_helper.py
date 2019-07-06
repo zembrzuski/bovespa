@@ -3,7 +3,12 @@ from helpers.balanco_date_mapper.conta_definition import conta_definition
 
 
 def evaluate_indicador(conta, txt):
-    return re.search(conta_definition[conta]['regex'], txt, re.IGNORECASE)
+    for regex in conta_definition[conta]['regexes']:
+        evaluated_regex = re.search(regex, txt, re.IGNORECASE)
+        if evaluated_regex:
+            return evaluated_regex
+
+    return None
 
 
 def retrieve_a_given_conta(conta, informacoes_financeiras):

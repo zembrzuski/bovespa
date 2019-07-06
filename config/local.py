@@ -1,6 +1,7 @@
 
 config = {
-    'base_filesystem_path': '/home/zembrzuski/labs/rolling-snow-zips'
+    'base_filesystem_path': '/home/zembrzuski/labs/rolling-snow-zips',
+    'elasticsearch': 'http://localhost:9200'
 }
 
 # config = {

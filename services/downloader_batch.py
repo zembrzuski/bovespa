@@ -24,7 +24,8 @@ def process_file(index):
 
     all_files = bovespa_unzipper.unzip(downloaded_file)
     formulario_cadastral_info = formulario_cadastral_extractor.extract(
-        all_files['formulario_cadastral'], all_files['formulario_demonstracao_financeira'])
+        all_files['formulario_cadastral'], all_files['formulario_demonstracao_financeira'],
+        document_id)
 
     filesystem_helper.persist_file(
         codigo_cvm=formulario_cadastral_info['codigo_cvm'],
