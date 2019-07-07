@@ -4,6 +4,7 @@ from services import balanco_importer
 
 def main():
     # downloader_batch.download()
+    # downloader_batch.download_list(dimed_list)
 
     balanco_importer.import_all_balancos_from_company('009342')
 

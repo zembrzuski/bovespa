@@ -25,7 +25,7 @@ def process_file(index):
     all_files = bovespa_unzipper.unzip(downloaded_file)
     formulario_cadastral_info = formulario_cadastral_extractor.extract(
         all_files['formulario_cadastral'], all_files['formulario_demonstracao_financeira'],
-        document_id)
+        index)
 
     filesystem_helper.persist_file(
         codigo_cvm=formulario_cadastral_info['codigo_cvm'],
@@ -41,3 +41,9 @@ def download():
         process_file(index)
         print('finished {}'.format(index))
         index = index - 1
+
+
+def download_list(docs):
+    for d in docs:
+        print('trying {}'.format(d))
+        process_file(d)
