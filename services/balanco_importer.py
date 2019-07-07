@@ -20,8 +20,8 @@ def import_all_balancos_from_company(cvm_code):
     balancos = filesystem_helper.find_all_balancos_from_company(cvm_code)
 
     for b in balancos:
-        print('trying to import {}'.format(b))
+        # print('trying to import {}'.format(b))
         resp = import_balanco(b)
-        print('finished to import {} --> '.format(b, resp))
+        # print('finished to import {} --> '.format(b, resp))
 
     return 'ok'

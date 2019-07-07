@@ -46,4 +46,6 @@ def index_balanco(balanco):
     url_to_post = '{}/teste/teste/{}'.format(config['elasticsearch'], balanco['numero_documento_original'])
     serialized = serialize_balanco(balanco)
 
-    return requests.post(url_to_post, json=serialized).status_code
+    code = requests.post(url_to_post, json=serialized).status_code
+    print('indexou {}'.format(balanco))
+    return code
