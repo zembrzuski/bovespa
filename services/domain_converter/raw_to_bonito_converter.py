@@ -17,14 +17,13 @@ def convert(raw, id_documento):
     conta_wrapper = conta_currying(raw['informacoes_financeiras'], index_to_date_mapper, trimestre)
 
     return {
-        'nome_empresa': raw['formulario_cadastral']['razao_social'],
-        'codigo_cvm': raw['formulario_cadastral']['codigo_cvm'],
-        'numero_documento_original': id_documento,
-        'data_entrega_documento': raw['formulario_cadastral']['data_entrega'],
-        'id_documento': id_documento,
-        'tipo_documento': raw['document_type'],
-        'plano_contas': {
-            'patrimonio_liquido': conta_wrapper('patrimonio_liquido'),
-            'lucro_liquido': conta_wrapper('lucro_liquido')
+        'nomeEmpresa': raw['formulario_cadastral']['razao_social'],
+        'codigoCvm': raw['formulario_cadastral']['codigo_cvm'],
+        'numeroDocumentoOriginal': id_documento,
+        'dataEntregaDocumento': raw['formulario_cadastral']['data_entrega'],
+        'tipoDocumento': raw['document_type'],
+        'planoContas': {
+            'patrimonioLiquido': conta_wrapper('patrimonio_liquido'),
+            'lucroLiquido': conta_wrapper('lucro_liquido')
         }
     }

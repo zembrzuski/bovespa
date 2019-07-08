@@ -36,14 +36,14 @@ def serialize_plano_contas(plano_contas):
 def serialize_balanco(balanco):
     balanco_to_serialize = copy.deepcopy(balanco)
 
-    balanco_to_serialize['data_entrega_documento'] = serialize_date(balanco_to_serialize['data_entrega_documento'])
-    balanco_to_serialize['plano_contas'] = serialize_plano_contas(balanco['plano_contas'])
+    balanco_to_serialize['dataEntregaDocumento'] = serialize_date(balanco_to_serialize['dataEntregaDocumento'])
+    balanco_to_serialize['planoContas'] = serialize_plano_contas(balanco['planoContas'])
 
     return balanco_to_serialize
 
 
 def index_balanco(balanco):
-    url_to_post = '{}/teste/teste/{}'.format(config['elasticsearch'], balanco['numero_documento_original'])
+    url_to_post = '{}/teste/teste/{}'.format(config['elasticsearch'], balanco['numeroDocumentoOriginal'])
     serialized = serialize_balanco(balanco)
 
     code = requests.post(url_to_post, json=serialized).status_code
