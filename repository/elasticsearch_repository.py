@@ -43,7 +43,7 @@ def serialize_balanco(balanco):
 
 
 def index_balanco(balanco):
-    url_to_post = '{}/teste/teste/{}'.format(config['elasticsearch'], balanco['numeroDocumentoOriginal'])
+    url_to_post = '{}/zembrzuski/raw_balances/{}'.format(config['elasticsearch'], balanco['numeroDocumentoOriginal'])
     serialized = serialize_balanco(balanco)
 
     code = requests.post(url_to_post, json=serialized).status_code
