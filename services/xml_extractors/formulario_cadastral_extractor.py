@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 import xmltodict
 import helpers.date_helper as date_helper
 

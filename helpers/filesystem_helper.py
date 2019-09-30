@@ -22,7 +22,7 @@ def load_file(id_documento):
 def persist_file(codigo_cvm, file_index, file_to_persist):
     directory = '{}/{}'.format(config['base_filesystem_path'], codigo_cvm)
 
-    os.makedirs(directory, exist_ok=True)
+    os.makedirs(directory)
 
     with open('{}/{}.zip'.format(directory, file_index), 'wb') as f:
         f.write(file_to_persist)

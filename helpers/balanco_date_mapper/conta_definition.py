@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 conta_definition = {
     'patrimonio_liquido': {
         'predicate': [
